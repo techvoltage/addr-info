@@ -123,7 +123,8 @@ main (void)
   strncpy (p->pattern, PATTERN, sizeof p->pattern);
   p->patternlen = strlen (p->pattern);
   p->pattern_addr = NULL;
-  void *ptr = find_func_address (FUNC, LIB);
+  void (*ptr) (void *);
+  ptr = find_func_address (FUNC, LIB);
   void *lib_base = find_lib_base (LIB);
   find_pattern_init (p);
   void *bin_sh = p->pattern_addr;
