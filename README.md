@@ -1,5 +1,5 @@
 # addr-info
-* Address Scanner for Linux
+* Address Scanner for Linux (Also see https://github.com/scanmem/scanmem)
 * Finds base address of a shared object
 * Finds function address in a shared object
 * Also finds if a pattern exists in memory by scanning all loaded modules (does not scan stack and heap)
