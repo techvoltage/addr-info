@@ -10,3 +10,4 @@
  * Include entire memory for pattern scanning
  * Remove memmem function
  * Extend to remote processes
+ * Repair Makefile. Add entry for samples
