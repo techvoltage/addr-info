@@ -9,5 +9,5 @@
  - [ ] Pattern scan without memory maps
  - [ ] Include entire memory for pattern scanning
  - [ ] Remove memmem function
- - [ ] Extend to remote processes
+ - [ ] Extend to remote processes (https://docs.pwntools.com/en/3.0.1/dynelf.html)
  - [ ] Repair Makefile. Add entry for samples
