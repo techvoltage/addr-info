@@ -39,7 +39,7 @@ struct pattern_struct
 {
   char pattern[PATTERNSIZEMAX];
   unsigned int patternlen;
-  void *pattern_addr;
+  void *pattern_addr;     //This field is not used anywhere, Use it to store all addresses found
 };
 void *
 find_pattern_in_memory (void *address, size_t memsize, char *pattern,

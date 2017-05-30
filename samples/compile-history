@@ -1,0 +1,8 @@
+ ~/android-sdk-linux/android-ndk-r12b/build/tools/make-standalone-toolchain.sh --arch=arm --platform=android-21 --install-dir=/tmp/android-ndk-21 --toolchain=arm-linux-androideabi-4.9
+ /tmp/android-ndk-21/bin/arm-linux-androideabi-gcc selfROP-sample-1-arm.c -o selfROP-sample-1-arm -fPIC -fPIE -rdynamic -fPIE -pie -g
+ adb push ./selfROP-sample-1-arm /data/data/com.termux/files/home/addr-info/samples/
+ gcc selfROP-sample-1-x32.c -o selfROP-sample-1-x32 -fno-stack-protector -z execstack -ldl -Wall -m32
+ gcc selfROP-sample-1-x64.c -o selfROP-sample-1-x64 -fno-stack-protector -z execstack -ldl -Wall
+ gcc pattern-find.c -o pattern-find -fno-stack-protector -z execstack -ldl -Wall
+ gcc pattern-find.c -o pattern-find -fno-stack-protector -z execstack -ldl -Wall -m32
+ gcc selfROP-sample-1-arm.c -o selfROP-sample-1-arm -ldl -Wall #on ARM
