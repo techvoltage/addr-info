@@ -5,11 +5,11 @@ main (void)
 {
   void (*ptr) (void *);
   char *bin_sh = "/bin/sh";
-  ptr = find_func_address ("system", "libc.so.6");
+  ptr = find_func_address ("system", "libc.so");
 asm ("mov r0, %[bin_sh];" "blx %[ptr]":
 : [ptr] "r" (ptr),[bin_sh] "r" (bin_sh):);
 
-  ptr = find_func_address ("exit", "libc.so.6");
+  ptr = find_func_address ("exit", "libc.so");
 asm ("mov r0, #0;" "blx %[ptr];":
 : [ptr] "r" (ptr):);
 
