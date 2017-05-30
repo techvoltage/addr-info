@@ -6,8 +6,8 @@
 * Each segment in a loaded module is scanned only once for a pattern
 * For stack and heap parsing as well, see https://github.com/ouadev/proc_maps_parser
  #### To Do: 
- * Pattern scan without memory maps
- * Include entire memory for pattern scanning
- * Remove memmem function
- * Extend to remote processes
- * Repair Makefile. Add entry for samples
+ - [ ] Pattern scan without memory maps
+ - [ ] Include entire memory for pattern scanning
+ - [ ] Remove memmem function
+ - [ ] Extend to remote processes
+ - [ ] Repair Makefile. Add entry for samples
