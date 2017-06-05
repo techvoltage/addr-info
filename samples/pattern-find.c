@@ -1,9 +1,9 @@
 //system() and exit()
-#include "addr-info.h"
-#define PATTERNSIZEMAX 50
+#include "../addr-info.h"
 #define PATTERN "/bin/sh"
 #define FUNC "system"
 #define LIB "libc.so.6"
+//#define LIB "/lib/i386-linux-gnu/libc.so.6"
 #define LIBBASE "ld.so"
 
 int

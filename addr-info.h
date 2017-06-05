@@ -30,16 +30,18 @@
 #include <link.h>
 #include <stdlib.h>
 #include <unistd.h>
-#define PATTERNSIZEMAX 50
+#define PATTERNSIZEMAX 150
 #define handle_error(msg) \
 do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
 
-struct pattern_struct
+struct p_struct
 {
   char pattern[PATTERNSIZEMAX];
   unsigned int patternlen;
   void *pattern_addr;     //This field is not used anywhere, Use it to store all addresses found
+  char lib[PATTERNSIZEMAX];
+  char func[PATTERNSIZEMAX];
 };
 void *
 find_pattern_in_memory (void *address, size_t memsize, char *pattern,
@@ -56,7 +58,14 @@ callback (struct dl_phdr_info *info, size_t size, void *data)
   void *current;
   //void *save;
 
-  //printf("name=%s (%d segments)\n", info->dlpi_name,info->dlpi_phnum);
+  printf("name=%s (%d segments)\n", info->dlpi_name,info->dlpi_phnum);
+  char *p;
+  p = strstr (info->dlpi_name,"test");
+  if(p)
+  {
+    printf("string found\n" );
+	strncpy(((struct p_struct *) data)->lib,info->dlpi_name,PATTERNSIZEMAX);
+  }
 
   for (j = 0; j < info->dlpi_phnum; j++)
     {
@@ -69,14 +78,14 @@ callback (struct dl_phdr_info *info, size_t size, void *data)
       current = (void *) info->dlpi_addr + info->dlpi_phdr[j].p_vaddr;
       void *found =
 	find_pattern_in_memory (current, info->dlpi_phdr[j].p_memsz,
-				((struct pattern_struct *) data)->pattern,
-				((struct pattern_struct *) data)->patternlen);
+				((struct p_struct *) data)->pattern,
+				((struct p_struct *) data)->patternlen);
       if (found)
 	{
-	  ((struct pattern_struct *) data)->pattern_addr = found;
+	  ((struct p_struct *) data)->pattern_addr = found;
 	  printf ("%s found at %p\n",
-		  ((struct pattern_struct *) data)->pattern,
-		  ((struct pattern_struct *) data)->pattern_addr);
+		  ((struct p_struct *) data)->pattern,
+		  ((struct p_struct *) data)->pattern_addr);
 	}
       //save = current;
     }
@@ -85,7 +94,7 @@ callback (struct dl_phdr_info *info, size_t size, void *data)
 }
 
 void
-find_pattern_init (struct pattern_struct *p)
+find_pattern_init (struct p_struct *p)
 {
   dl_iterate_phdr (callback, p);	//iterate modules to find the pattern
 }
