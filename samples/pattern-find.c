@@ -1,5 +1,5 @@
 //system() and exit()
-#include "../addr-info.h"
+#include "addr-info.h"
 #define PATTERN "/bin/sh"
 #define FUNC "system"
 #define LIB "libc.so.6"
