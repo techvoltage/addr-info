@@ -9,7 +9,7 @@
 int
 main (void)
 {
-  struct pattern_struct *p = malloc (sizeof *p);
+  struct p_struct *p = malloc (sizeof *p);
   strncpy (p->pattern, PATTERN, sizeof p->pattern);
   p->patternlen = strlen (p->pattern);
   p->pattern_addr = NULL;
