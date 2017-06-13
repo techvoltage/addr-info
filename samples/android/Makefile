@@ -1,38 +1,80 @@
-#include Makefile.inc
-CFLAGS=-m32
-#ARCH := $(shell getconf LONG_BIT)
-#CPP_FLAGS_32 := -m32 -Wall -I$(INC_DIR) #...  Some 32 specific compiler flags ...
-#CPP_FLAGS_64 := -Wall -I$(INC_DIR)
-#CPP_FLAGS_ARM_32 := -Wall -I$(INC_DIR)
-#CPP_FLAGS_ARM_64 := -Wall -I$(INC_DIR)
-
-#CPP_FLAGS := $(CPP_FLAGS_$(ARCH))  #... all the other flags ...
-
-#addr-info: $(OBJECTS)
-#	$(CC) $(CFLAGS) $(OBJECTS) -o addr-info $(LDFLAGS)
-#SUBDIRS=samples/x86 samples/x86-64 samples/arm-32
+include $(CLEAR_VARS)
+LOCAL_PATH := $(call my-dir)
+include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_EXECUTABLE)    # <-- Use this to build an executable.
+#https://stackoverflow.com/questions/9460251/how-do-i-build-a-native-command-line-executable-to-run-on-android
+#CFLAGS=-m32
 SRCS = 	$(wildcard *.c)
 PROGS = $(patsubst %.c,%,$(SRCS))
 OBJECTS = $(patsubst %.c,%.o,$(SRCS))
-samples: $(PROGS)	
-	#echo 'hi'
-	#echo "hi"
-	#echo "PRJCFLAGS:$(PRJCFLAGS)"
-all:samples
+APP := selfROP-sample-1-android
+ROOT := /home/jay/android-sdk-linux
+INSTALL_DIR := /data/local/tmp
+NDK_PLATFORM_VER := 23
+ANDROID_NDK_ROOT := $(ROOT)/android-ndk-r12b
+ANDROID_NDK_HOST := linux-x86_64
+ANDROID_SDK_ROOT := $(ROOT)
+PREBUILD := $(ANDROID_NDK_ROOT)/toolchains/arm-linux-androideabi-4.9/prebuilt//$(ANDROID_NDK_HOST)
+LOCAL_MODULE := libdl
+LOCAL_SRC_FILES := *.c
+LOCAL_CPPFLAGS := -std=gnu++0x -Wall -fPIE -pie         # whatever g++ flags you like
+LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog -fPIE -pie -ldl  # whatever ld flags you like
+LOCAL_SHARED_LIBRARIES := libcutils libdl
+BIN := $(PREBUILD)/bin/
+LIB := $(ANDROID_NDK_ROOT)/platforms/android-$(NDK_PLATFORM_VER)/arch-arm/usr/lib
+INCLUDE := $(ANDROID_NDK_ROOT)/platforms/android-$(NDK_PLATFORM_VER)/arch-arm/usr/include
+
+CC := $(BIN)/arm-linux-androideabi-gcc
+GDB_CLIENT := $(BIN)/arm-linux-androideabi-gdb
+
+LIBCRT := $(LIB)/crtbegin_dynamic.o
+
+LINKER := /system/bin/linker
+
+DEBUG := -g
+
+CFLAGS := $(DEBUG) -fno-short-enums -I$(INCLUDE)
+CFLAGS += -Wl,-rpath-link=$(LIB),-dynamic-linker=$(LINKER) -L$(LIB)
+CFLAGS += -nostdlib -lc -pie -fPIE
+
+#all: $(APP)
+
+#$(APP): $(APP).c
+#	$(CC) -o $@ $< $(CFLAGS) $(LIBCRT)
+
+install: $(APP)
+	$(ANDROID_SDK_ROOT)/platform-tools/adb push $(APP) $(INSTALL_DIR)/$(APP) 
+	$(ANDROID_SDK_ROOT)/platform-tools/adb shell chmod 777 $(INSTALL_DIR)/$(APP)
+
+shell:
+	$(ANDROID_SDK_ROOT)/platform-tools/adb shell
+
+run:
+	$(ANDROID_SDK_ROOT)/platform-tools/adb shell $(INSTALL_DIR)/$(APP)
+	@#/data/local/tmp/selfROP-sample-1-android
+
+debug-install:
+	$(ANDROID_SDK_ROOT)/platform-tools/adb push $(PREBUILD)/../gdbserver $(INSTALL_DIR)/gdbserver
+	$(ANDROID_SDK_ROOT)/platform-tools/adb shell chmod 777 $(INSTALL_DIR)/gdbserver
+
+debug-go:
+	$(ANDROID_SDK_ROOT)/platform-tools/adb forward tcp:1234: tcp:1234
+	$(ANDROID_SDK_ROOT)/platform-tools/adb shell $(INSTALL_DIR)/gdbserver :1234 $(INSTALL_DIR)/$(APP)
+
+debug:
+	$(GDB_CLIENT) $(APP)
+
+#override clean:
+#	@rm -f $(APP).o $(APP)
+
+
+all: $(PROGS)
+	make install
+	make run
 %.o:
 	@echo $@
-show-src:
-	@echo $(SRCS)
-show-progs:
-	@echo $(PROGS)
-show-objects:
-	@echo About to make distribution files
-	@echo $(OBJECTS)
 %: %.c
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
-#clean:
-#	rm -f *~ *.o addr-info
 clean:
 	rm -f $(PROGS) $(OBJECTS)
-
 .PHONY: all install clean test
