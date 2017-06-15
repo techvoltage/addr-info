@@ -7,9 +7,9 @@ include $(BUILD_EXECUTABLE)    # <-- Use this to build an executable.
 SRCS = 	$(wildcard *.c)
 PROGS = $(patsubst %.c,%,$(SRCS))
 OBJECTS = $(patsubst %.c,%.o,$(SRCS))
-APP := selfROP-sample-1-android
+#APP := selfROP-sample-1-android
+APP := hello_world
 ROOT := /home/jay/android-sdk-linux
-INSTALL_DIR := /data/local/tmp
 NDK_PLATFORM_VER := 23
 ANDROID_NDK_ROOT := $(ROOT)/android-ndk-r12b
 ANDROID_NDK_HOST := linux-x86_64
@@ -41,10 +41,41 @@ CFLAGS += -nostdlib -lc -pie -fPIE
 
 #$(APP): $(APP).c
 #	$(CC) -o $@ $< $(CFLAGS) $(LIBCRT)
-
+INSTALL_DIR:=/sdcard/
+SHELL=/bin/bash
+abc=all 
+test:
+	@ echo $(SHELL)
+	@if [ ! `$(ANDROID_SDK_ROOT)/platform-tools/adb shell id -u` ]; then \
+		$(ANDROID_SDK_ROOT)/platform-tools/adb mkdir -p /data/sdcard/tmp; \
+		$(INSTALL_DIR)=/sdcard; \
+	else \
+		echo hi; \
+		export INSTALL_DIR=/data/local/tmp; \
+	fi;
+		@echo done
+check:
+	@ if [ ! `$(ANDROID_SDK_ROOT)/platform-tools/adb shell id -u` ]; then \
+		$(ANDROID_SDK_ROOT)/platform-tools/adb mkdir -p /data/sdcard/tmp; \ 
+		INSTALL_DIR=/data/sdcard/tmp; \ 
+		@ echo rooted; \ 
+	else \
+		@ echo not rooted; \
+		INSTALL_DIR = /data/local/tmp; \
+	fi
+#	if [ ! `$(ANDROID_SDK_ROOT)/platform-tools/adb shell id -u` ]; then
+#	if [ -f ls ]; then \  
+#		@echo rooted; \
+#		$(ANDROID_SDK_ROOT)/platform-tools/adb mkdir -p /data/sdcard/tmp; \
+#		INSTALL_DIR := /data/sdcard/tmp; \
+#	else \
+#		@echo not rooted; \
+#		INSTALL_DIR := /data/local/tmp; \
+#	fi
 install: $(APP)
 	$(ANDROID_SDK_ROOT)/platform-tools/adb push $(APP) $(INSTALL_DIR)/$(APP) 
 	$(ANDROID_SDK_ROOT)/platform-tools/adb shell chmod 777 $(INSTALL_DIR)/$(APP)
+	$(ANDROID_SDK_ROOT)/platform-tools/adb shell chmod +x $(INSTALL_DIR)/$(APP)
 
 shell:
 	$(ANDROID_SDK_ROOT)/platform-tools/adb shell
@@ -69,6 +100,8 @@ debug:
 
 
 all: $(PROGS)
+	make test
+	#make check
 	make install
 	make run
 %.o:
