@@ -34,9 +34,6 @@ show-objects:
 	echo $(UNAME_M)
 ifeq ($(filter arm%,$(UNAME_M)),)
 	$(error Compile this sample on ARM)
-	echo if
-else
-	echo else
 endif
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
 #clean:

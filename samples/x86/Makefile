@@ -30,8 +30,9 @@ show-objects:
 	@echo $(OBJECTS)
 %: %.c
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
-#clean:
-#	rm -f *~ *.o addr-info
+ifeq ($(filter 86%,$(UNAME_M)),)
+	$(error Compile this sample on intel)
+endif
 clean:
 	rm -f $(PROGS) $(OBJECTS)
 
