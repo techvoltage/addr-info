@@ -24,8 +24,8 @@ BIN := $(PREBUILD)/bin/
 LIB := $(ANDROID_NDK_ROOT)/platforms/android-$(NDK_PLATFORM_VER)/arch-arm/usr/lib
 INCLUDE := $(ANDROID_NDK_ROOT)/platforms/android-$(NDK_PLATFORM_VER)/arch-arm/usr/include
 
-CC := gcc
-GDB_CLIENT := gdb
+CC := $(BIN)/arm-linux-androideabi-gcc
+GDB_CLIENT := $(BIN)/arm-linux-androideabi-gdb
 
 LIBCRT := $(LIB)/crtbegin_dynamic.o
 
