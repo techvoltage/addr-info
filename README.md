@@ -11,3 +11,4 @@
  - [ ] Remove memmem function
  - [ ] Extend to remote processes (https://docs.pwntools.com/en/3.0.1/dynelf.html)
  - [ ] Repair Makefile. Add entry for samples
+ - [ ] Does this help? https://www.usenix.org/node/190923 Check later
