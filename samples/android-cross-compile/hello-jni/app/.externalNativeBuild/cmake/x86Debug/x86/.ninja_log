@@ -1,5 +1,0 @@
-# ninja log v5
-0	1093	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	18b8f0a6b8e5916a
-1093	1364	0	/home/jay/Dropbox/Mtech/s3/Android_Thesis/test_codes/addr-info/samples/android-cross-compile/hello-jni/app/build/intermediates/cmake/x86/debug/obj/x86/libhello-jni.so	2c783ea90d2d46f9
-0	2172	0	CMakeFiles/hello-jni.dir/hello-jni.c.o	18b8f0a6b8e5916a
-2173	2705	0	/home/jay/Dropbox/Mtech/s3/Android_Thesis/test_codes/addr-info/samples/android-cross-compile/hello-jni/app/build/intermediates/cmake/x86/debug/obj/x86/libhello-jni.so	2c783ea90d2d46f9
