@@ -2,11 +2,9 @@ Hello ROP
 =========
 Hello ROP is an Android sample that uses JNI to execute code in a ROP-like manner from an Android Java Activity. It locates system() and '/system/bin/sh' at runtime to execute a shell(using inlined ARM assembly), in a ROP like manner.
 
-This sample uses the new [Android Studio CMake plugin](http://tools.android.com/tech-docs/external-c-builds) with C++ support.
-
 Pre-requisites
 --------------
-- Android Studio 2.2+ with [NDK](https://developer.android.com/ndk/) bundle.
+- Android Studio(most recent) with [NDK](https://developer.android.com/ndk/) bundle.
 
 Screenshots
 -----------
