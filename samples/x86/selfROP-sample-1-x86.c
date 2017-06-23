@@ -1,5 +1,6 @@
 //system() and exit()
 #define LIB "libc.so.6"
+#define DEBUG 1
 #include "addr-info.h"
 int
 main (void)

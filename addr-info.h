@@ -33,6 +33,9 @@
 #define PATTERNSIZEMAX 150
 #define handle_error(msg) \
 do { perror(msg); exit(EXIT_FAILURE); } while (0)
+#define fprintf_ fprintf
+#define debug_print(fmt, ...) \
+            do { if (DEBUG) fprintf_(stderr, fmt, __VA_ARGS__); } while (0)
 
 
 struct p_struct
@@ -47,6 +50,7 @@ void *
 find_pattern_in_memory (void *address, size_t memsize, char *pattern,
 			size_t patternlen)
 {
+  debug_print("%s\n",__func__);
   void *p = memmem (address, memsize, pattern, patternlen);
   return p;
 }
@@ -54,16 +58,18 @@ find_pattern_in_memory (void *address, size_t memsize, char *pattern,
 static int
 callback (struct dl_phdr_info *info, size_t size, void *data)
 {
+  debug_print("%s\n",__func__);
   int j;
   void *current;
   //void *save;
 
-  printf("name=%s (%d segments)\n", info->dlpi_name,info->dlpi_phnum);
+  debug_print("name=%s (%d segments)\n", info->dlpi_name,info->dlpi_phnum);
   char *p;
   p = strstr (info->dlpi_name,"test");
   if(p)
   {
-    printf("string found\n" );
+  debug_print("string found in %s \n",info->dlpi_name);
+  //printf("string found\n");
 	strncpy(((struct p_struct *) data)->lib,info->dlpi_name,PATTERNSIZEMAX);
   }
 
@@ -94,8 +100,9 @@ callback (struct dl_phdr_info *info, size_t size, void *data)
 }
 
 void
-find_pattern_init (struct p_struct *p)
+find_pattern_init(struct p_struct *p)
 {
+  debug_print("%s\n",__func__);
   dl_iterate_phdr (callback, p);	//iterate modules to find the pattern
 }
 
@@ -103,6 +110,7 @@ find_pattern_init (struct p_struct *p)
 void *
 find_lib_base (char *lib)
 {
+  debug_print("%s\n",__func__);
   struct link_map *lm = (struct link_map *) dlopen (lib, RTLD_NOW);
   return (void *) lm->l_addr;
 }
