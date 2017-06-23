@@ -85,11 +85,11 @@ Java_com_example_hellorop_HelloROP_stringFromJNI( JNIEnv* env,
   LOGD("DEBUG msg finding func address");
   ptr = find_func_address ("exit", LIB);
   LOGD("DEBUG msg found func address");
-  sleep(20);
-asm ("movs r0, #0;" "blx %[ptr];":
-: [ptr] "r" (ptr):);
+  sleep(10);
+//asm ("movs r0, #0;" "blx %[ptr];":
+//: [ptr] "r" (ptr):);
   //ptr (0);
-  LOGD("Do not print me\n");
+  //LOGD("Do not print me\n");
 /* ARM                      */
 
 
