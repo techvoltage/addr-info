@@ -8,6 +8,7 @@ CFLAGS=-m32
 
 #CPP_FLAGS := $(CPP_FLAGS_$(ARCH))  #... all the other flags ...
 
+UNAME_M=$(shell uname -m)
 #addr-info: $(OBJECTS)
 #	$(CC) $(CFLAGS) $(OBJECTS) -o addr-info $(LDFLAGS)
 #SUBDIRS=samples/x86 samples/x86-64 samples/arm-32
@@ -18,6 +19,9 @@ samples: $(PROGS)
 	#echo 'hi'
 	#echo "hi"
 	#echo "PRJCFLAGS:$(PRJCFLAGS)"
+	#@echo uname -m: $(UNAME_M)
+	#@echo $(filter x86%,$(UNAME_M))
+	#@echo $(filter %OS,Linux Darwin SunOS FreeBSD GNU/kFreeBSD NetBSD OpenBSD GNU)
 all:samples
 %.o:
 	@echo $@
@@ -30,7 +34,8 @@ show-objects:
 	@echo $(OBJECTS)
 %: %.c
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
-ifeq ($(filter 86%,$(UNAME_M)),)
+
+ifeq ($(filter x86%,$(UNAME_M)),)
 	$(error Compile this sample on intel)
 endif
 clean:

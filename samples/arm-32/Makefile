@@ -36,8 +36,6 @@ ifeq ($(filter arm%,$(UNAME_M)),)
 	$(error Compile this sample on ARM)
 endif
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
-#clean:
-#	rm -f *~ *.o addr-info
 clean:
 	rm -f $(PROGS) $(OBJECTS)
 

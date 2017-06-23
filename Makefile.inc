@@ -9,7 +9,7 @@ ARFLAGS=
 RANLIB=ranlib
 RM=rm
 ECHO=echo
-SHELL=/bin/sh
+#SHELL=/bin/sh
 
 .SILENT :
 

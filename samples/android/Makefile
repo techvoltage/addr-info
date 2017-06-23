@@ -10,6 +10,7 @@ LOCAL_SRC_FILES := *.c
 #LOCAL_SHARED_LIBRARIES := libcutils libdl
 #INCLUDE := $(ANDROID_NDK_ROOT)/platforms/android-$(NDK_PLATFORM_VER)/arch-arm/usr/include
 
+UNAME_M=$(shell uname -m)
 CC := gcc
 
 #DEBUG := -g
@@ -23,6 +24,9 @@ all: $(PROGS)
 	@echo $@
 %: %.c
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
+ifeq ($(filter arm%,$(UNAME_M)),)
+	$(error Compile this sample on ARM)
+endif
 clean:
 	rm -f $(PROGS) $(OBJECTS)
 .PHONY: all install clean test

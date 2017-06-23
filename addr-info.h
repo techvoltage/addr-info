@@ -34,6 +34,7 @@
 #define handle_error(msg) \
 do { perror(msg); exit(EXIT_FAILURE); } while (0)
 #define fprintf_ fprintf
+#define DEBUG 0
 #define debug_print(fmt, ...) \
             do { if (DEBUG) fprintf_(stderr, fmt, __VA_ARGS__); } while (0)
 
