@@ -1,6 +1,6 @@
 Hello ROP
 =========
-Hello ROP is an Android sample that uses JNI to call C code from a Android Java Activity. It also locates system() and '/system/bin/sh' at runtime to execute a shell(using inlined ARM assembly), in a ROP like manner.
+Hello ROP is an Android sample that uses JNI to execute code in a ROP-like manner from an Android Java Activity. It locates system() and '/system/bin/sh' at runtime to execute a shell(using inlined ARM assembly), in a ROP like manner.
 
 This sample uses the new [Android Studio CMake plugin](http://tools.android.com/tech-docs/external-c-builds) with C++ support.
 
