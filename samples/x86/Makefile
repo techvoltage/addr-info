@@ -35,7 +35,7 @@ show-objects:
 %: %.c
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
 
-ifeq ($(filter x86%,$(UNAME_M)),)
+ifeq ($(filter x86% genymotion%,$(UNAME_M)),)
 	$(error Compile this sample on intel)
 endif
 clean:
