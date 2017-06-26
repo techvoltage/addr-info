@@ -27,6 +27,11 @@ all: $(PROGS)
 ifeq ($(filter arm%,$(UNAME_M)),)
 	$(error Compile this sample on ARM)
 endif
+
+ifeq ($(filter genymotion%,$(UNAME_M)),)
+	@echo compiling on genymotion emulator
+	#$(error Compile this sample on ARM)
+endif
 clean:
 	rm -f $(PROGS) $(OBJECTS)
 .PHONY: all install clean test
