@@ -24,11 +24,7 @@ all: $(PROGS)
 	@echo $@
 %: %.c
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
-#ifeq ($(filter arm%,$(UNAME_M)),)
-#	$(error Compile this sample on ARM)
-#endif
-
-ifeq ($(filter genymotion%,$(UNAME_M)),)
+ifneq ($(filter genymotion%,$(UNAME_M)),)
 	@echo compiling on genymotion emulator
 	#$(error Compile this sample on ARM)
 endif
