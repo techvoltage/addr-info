@@ -1,5 +1,5 @@
 #include Makefile.inc
-CFLAGS=-m32
+CFLAGS:= -m32
 #ARCH := $(shell getconf LONG_BIT)
 #CPP_FLAGS_32 := -m32 -Wall -I$(INC_DIR) #...  Some 32 specific compiler flags ...
 #CPP_FLAGS_64 := -Wall -I$(INC_DIR)
