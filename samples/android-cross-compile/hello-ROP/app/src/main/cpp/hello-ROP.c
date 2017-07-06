@@ -74,39 +74,39 @@ Java_com_example_hellorop_HelloROP_stringFromJNI( JNIEnv* env,
 #define ABI "unknown"
 #endif
 /*ARM                       */
-  void (*ptr) (void *);
-  char *bin_sh = "/system/bin/sh";
-  LOGD("DEBUG msg finding func address");
-  ptr = find_func_address ("system", LIB);
-  LOGD("DEBUG msg found func address");
-  LOGD("ptr=%p",ptr);
-  asm ("mov r0, %[bin_sh];" "blx %[ptr]":
-: [ptr] "r" (ptr),[bin_sh] "r" (bin_sh):);
-  LOGD("DEBUG msg finding func address");
-  ptr = find_func_address ("exit", LIB);
-  LOGD("DEBUG msg found func address");
-  sleep(10);
-//asm ("movs r0, #0;" "blx %[ptr];":
-//: [ptr] "r" (ptr):);
-  //ptr (0);
-  //LOGD("Do not print me\n");
+//  void (*ptr) (void *);
+//  char *bin_sh = "/system/bin/sh";
+//  LOGD("DEBUG msg finding func address");
+//  ptr = find_func_address ("system", LIB);
+//  LOGD("DEBUG msg found func address");
+//  LOGD("ptr=%p",ptr);
+//  asm ("mov r0, %[bin_sh];" "blx %[ptr]":
+//: [ptr] "r" (ptr),[bin_sh] "r" (bin_sh):);
+//  LOGD("DEBUG msg finding func address");
+//  ptr = find_func_address ("exit", LIB);
+//  LOGD("DEBUG msg found func address");
+//  sleep(10);
+////asm ("movs r0, #0;" "blx %[ptr];":
+////: [ptr] "r" (ptr):);
+//  //ptr (0);
+//  //LOGD("Do not print me\n");
 /* ARM                      */
 
 
 /* x86                      */
-//  void (*ptr) (void *);
-//  ptr = find_func_address ("system", LIB);
-//  char *bin_sh = "/bin/sh";
-////asm (".intel_syntax noprefix;" "push %[bin_sh];" "call %[ptr];" ".att_syntax noprefix;":
-//  asm ("pushl %[bin_sh];" "call %[ptr];" ".att_syntax noprefix;":
-//: [ptr] "r" (ptr), [bin_sh] "r" (bin_sh):);
-//
-//  ptr = find_func_address ("exit", LIB);
-//asm (".intel_syntax noprefix;" "mov eax, %0;" "push 0;" "call eax;" ".att_syntax noprefix;":
-//: "r" (ptr):"eax");
-//
-//  //ptr (0);
-//  printf ("Do not print me\n");
+  void (*ptr) (void *);
+  ptr = find_func_address ("system", LIB);
+  char *bin_sh = "/bin/sh";
+//asm (".intel_syntax noprefix;" "push %[bin_sh];" "call %[ptr];" ".att_syntax noprefix;":
+  asm ("pushl %[bin_sh];" "call %[ptr];" ".att_syntax noprefix;":
+: [ptr] "r" (ptr), [bin_sh] "r" (bin_sh):);
+
+  ptr = find_func_address ("exit", LIB);
+asm (".intel_syntax noprefix;" "mov eax, %0;" "push 0;" "call eax;" ".att_syntax noprefix;":
+: "r" (ptr):"eax");
+
+  //ptr (0);
+  printf ("Do not print me\n");
   //return 0;
 /* x86                      */
 
