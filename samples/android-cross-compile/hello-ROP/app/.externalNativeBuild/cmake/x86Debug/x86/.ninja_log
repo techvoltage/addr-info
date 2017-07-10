@@ -1,1 +1,11 @@
 # ninja log v5
+1	6264	0	CMakeFiles/hello-ROP.dir/hello-ROP.c.o	8ba447abb70b496a
+6378	9088	0	/home/jay/Dropbox/Mtech/s3/Android_Thesis/test_codes/addr-info/samples/android-cross-compile/hello-ROP/app/build/intermediates/cmake/x86/debug/obj/x86/libhello-ROP.so	536c83e1f45a93f8
+2620	17994	0	CMakeFiles/hello-ROP.dir/hello-ROP.c.o	8ba447abb70b496a
+18055	20844	0	/home/jay/Dropbox/Mtech/s3/Android_Thesis/test_codes/addr-info/samples/android-cross-compile/hello-ROP/app/build/intermediates/cmake/x86/debug/obj/x86/libhello-ROP.so	536c83e1f45a93f8
+2731	20762	0	CMakeFiles/hello-ROP.dir/hello-ROP.c.o	8ba447abb70b496a
+20812	23435	0	/home/jay/Dropbox/Mtech/s3/Android_Thesis/test_codes/addr-info/samples/android-cross-compile/hello-ROP/app/build/intermediates/cmake/x86/debug/obj/x86/libhello-ROP.so	536c83e1f45a93f8
+2665	10651	0	CMakeFiles/hello-ROP.dir/hello-ROP.c.o	8ba447abb70b496a
+10683	11069	0	/home/jay/Dropbox/Mtech/s3/Android_Thesis/test_codes/addr-info/samples/android-cross-compile/hello-ROP/app/build/intermediates/cmake/x86/debug/obj/x86/libhello-ROP.so	536c83e1f45a93f8
+0	1810	0	CMakeFiles/hello-ROP.dir/hello-ROP.c.o	8ba447abb70b496a
+1810	1900	0	/home/jay/Dropbox/Mtech/s3/Android_Thesis/test_codes/addr-info/samples/android-cross-compile/hello-ROP/app/build/intermediates/cmake/x86/debug/obj/x86/libhello-ROP.so	536c83e1f45a93f8

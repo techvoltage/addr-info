@@ -94,17 +94,24 @@ Java_com_example_hellorop_HelloROP_stringFromJNI( JNIEnv* env,
 
 
 /* x86                      */
-  void (*ptr) (void *);
-  ptr = find_func_address ("system", LIB);
-  char *bin_sh = "/bin/sh";
+  void (*ptr) ();
+LOGD("DEBUG msg finding func address");
+ptr = find_func_address ("system", LIB);
+LOGD("DEBUG msg found func address");
+LOGD("ptr=%p",ptr);
+char *bin_sh = "/system/bin/sh";
 //asm (".intel_syntax noprefix;" "push %[bin_sh];" "call %[ptr];" ".att_syntax noprefix;":
-  asm ("pushl %[bin_sh];" "call %[ptr];" ".att_syntax noprefix;":
-: [ptr] "r" (ptr), [bin_sh] "r" (bin_sh):);
-
-  ptr = find_func_address ("exit", LIB);
-asm (".intel_syntax noprefix;" "mov eax, %0;" "push 0;" "call eax;" ".att_syntax noprefix;":
+asm ("pushl %[bin_sh];": //"call %[ptr];" ".att_syntax noprefix;":
+: [bin_sh] "r" (bin_sh):);
+ptr();
+LOGD("DEBUG msg finding func address");
+ptr = find_func_address ("exit", LIB);
+LOGD("DEBUG msg found func address");
+LOGD("ptr=%p",ptr);
+asm ("push $0;":// "call eax;" ".att_syntax noprefix;":
 : "r" (ptr):"eax");
-
+sleep(10);
+ptr();
   //ptr (0);
   printf ("Do not print me\n");
   //return 0;

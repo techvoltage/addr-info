@@ -1,0 +1,228 @@
+    1  locate
+    2  pkg udpate
+    3  pkg update
+    4  pkg upgrade
+    5  pkg install mlocate gcc make
+    6  pkg install mlocate make
+    7  pkg install mlocate clang
+    8  pkg install mlocate tmux
+    9  nm
+   10  exit
+   11  exit
+   12  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1 |grep -C 500 __strdup
+   13  find /system/lib -printf '%p\n' -exec nm -D {} \; 
+   14  find /system/lib -printf '%p\n' -exec nm -D {} \; 
+   15  find /system/lib 
+   16  find /system/lib -exec ls {} \;
+   17  find /system/lib -exec nm {} \;
+   18  find /system/lib -exec nm -D {} \; 2>&1 |grep strdup
+   19  find printf "%p\n" /system/lib -exec nm -D {} \; 2>&1 |grep strdup
+   20  tmux
+   21  find printf "%p\n" /system/lib -exec nm -D {} \; 2>&1 |grep -C 300 strdup
+   22  scas
+   23  clear
+   24  reset
+   25  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1 |grep -C 500 __strdup
+   26  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1 |grep -C 500 __strdup
+   27  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1 |grep -C 50 __strdup
+   28  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1 |grep -C 50 strdup
+   29  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1 |grep strdup
+   30  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1
+   31  find /system/lib -printf '%p\n' -exec nm -D {} \; 2>&1
+   32  find -printf '%p\n' /system/lib -exec nm -D {} \; 2>&1 |grep -C 500 __strdup
+   33  find -printf '%p\n' /system/lib -exec nm -D {} \; 2>&1 |grep -C 500 strdup
+   34  find -printf '%p\n' /system/lib -exec nm -D {} \; 2>&1 |grep -C 500 strdup
+   35  find -printf '%p\n' /system/lib -exec nm -D {} \; 2>&1 
+   36  find -printf '%p\n' /system/lib -exec nm -D {} \;
+   37  find /system/lib -exec nm -D {} \;
+   38  find /system/lib -exec nm -D {} \; > log.txt
+   39  pwd
+   40  ls
+   41  find -printf "%p\n" /system/lib -exec nm -D {} \; > log.txt
+   42  find -print "%p\n" /system/lib -exec nm -D {} \; > log.txt
+   43  find /system/lib -print "%p" -exec nm -D {} \; > log.txt
+   44  find /system/lib -print0 "%p" -exec nm -D {} \; > log.txt
+   45  find /system/lib -print0 -exec nm -D {} \; > log.txt
+   46  find /system/lib -print0 -exec nm -D {} \; 
+   47  find /system/lib -print0 -exec nm -D {} \; > log.txt
+   48  cat log.txt |less
+   49  pwd
+   50  ls
+   51  find /system/lib -print -exec nm -D {} \; > log.txt
+   52  exit
+   53  locate addr-info.h
+   54  updatedb
+   55  locate addr-info.h
+   56  ls
+   57  pwd
+   58  git clone https://github.com/techvoltage/addr-info
+   59  pkg install wget curl git
+   60  df -h
+   61  df
+   62  ls
+   63  git clone https://github.com/techvoltage/addr-info
+   64  cd addr-info/
+   65  make
+   66  uname 
+   67  uname -r
+   68  uname -a
+   69  git pull origin master
+   70  make
+   71  vim samples/android/Makefile 
+   72  pkg install nano vim
+   73  vim samples/android/Makefile 
+   74  git pull origin master
+   75  lsas
+   76  clear
+   77  make
+   78  git pull origin master
+   79  make
+   80  git pull origin master
+   81  vim samples/android/Makefile 
+   82  make cl
+   83  make clean
+   84  make
+   85  vim Makefile
+   86  vim samples/android/Makefile 
+   87  git pull origin master
+   88  make
+   89  :q
+   90  uname -r
+   91  git pull origin master
+   92  make
+   93  vim samples/x86/Makefile 
+   94  make
+   95  vim samples/x86/Makefile 
+   96  uname -m
+   97  vim samples/x86/Makefile 
+   98  make
+   99  vim samples/x86/selfROP-sample-1-x86.c 
+  100  make
+  101  vim samples/x86/Makefile 
+  102  vim samples/x86/selfROP-sample-1-x86.c 
+  103  make
+  104  vim samples/x86/selfROP-sample-1-x86.c 
+  105  make
+  106  vim samples/x86/selfROP-sample-1-x86.c 
+  107  make
+  108  vim samples/x86/selfROP-sample-1-x86.c 
+  109  make
+  110  vim samples/x86/selfROP-sample-1-x86.c 
+  111  make
+  112  vim samples/x86/selfROP-sample-1-x86.c 
+  113  make
+  114  vim samples/x86/selfROP-sample-1-x86.c 
+  115  make
+  116  vim samples/x86/selfROP-sample-1-x86.c 
+  117  make
+  118  vim samples/x86/selfROP-sample-1-x86.c 
+  119  make
+  120  vim samples/x86/selfROP-sample-1-x86.c 
+  121  make
+  122  vim samples/x86/selfROP-sample-1-x86.c 
+  123  make
+  124  vim samples/x86/selfROP-sample-1-x86.c 
+  125  make
+  126  vim samples/x86/selfROP-sample-1-x86.c 
+  127  make
+  128  vim samples/x86/selfROP-sample-1-x86.c 
+  129  make
+  130  vim samples/x86/selfROP-sample-1-x86.c 
+  131  make
+  132  vim samples/x86/selfROP-sample-1-x86.c 
+  133  make
+  134  make --trace
+  135  vim samples/x86/selfROP-sample-1-x86.c 
+  136  make --trace
+  137  vim samples/x86/selfROP-sample-1-x86.c 
+  138  make --trace
+  139  vim samples/x86/selfROP-sample-1-x86.c 
+  140  make --trace
+  141  vim samples/x86/selfROP-sample-1-x86.c 
+  142  make --trace
+  143  vim samples/x86/selfROP-sample-1-x86.c 
+  144  make --trace
+  145  vim samples/x86/selfROP-sample-1-x86.c 
+  146  make --trace
+  147  vim samples/x86/selfROP-sample-1-x86.c 
+  148  make --trace
+  149  vim samples/x86/selfROP-sample-1-x86.c 
+  150  make --trace
+  151  vim samples/x86/selfROP-sample-1-x86.c 
+  152  make --trace
+  153  vim samples/x86/selfROP-sample-1-x86.c 
+  154  make --trace
+  155  vim samples/x86/selfROP-sample-1-x86.c 
+  156  make --trace
+  157  vim samples/x86/selfROP-sample-1-x86.c 
+  158  make --trace
+  159  vim samples/x86/selfROP-sample-1-x86.c 
+  160  vim samples/x86/selfROP-sample-1-x86.c 
+  161  make --trace
+  162  samples/x86/selfROP-sample-1-x86 
+  163  vim samples/x86/selfROP-sample-1-x86.c 
+  164  make --trace
+  165  samples/x86/selfROP-sample-1-x86 
+  166  vim samples/x86/selfROP-sample-1-x86.c 
+  167  vim addr-info.h 
+  168  make --trace
+  169  make 
+  170  samples/x86/selfROP-sample-1-x86 
+  171  gdb~
+  172  pkg install gdb~
+  173  strace samples/x86/selfROP-sample-1-x86
+  174  vim samples/x86/selfROP-sample-1-x86.c 
+  175  make 
+  176  samples/x86/selfROP-sample-1-x86 
+  177  vim samples/x86/selfROP-sample-1-x86.c 
+  178  make 
+  179  samples/x86/selfROP-sample-1-x86 
+  180  strace samples/x86/selfROP-sample-1-x86
+  181  vim samples/x86/selfROP-sample-1-x86.c 
+  182  vim samples/x86/Makefile 
+  183  make
+  184  samples/x86/selfROP-sample-1-x86 
+  185  make clean
+  186  make
+  187  samples/x86/selfROP-sample-1-x86 
+  188  strace samples/x86/selfROP-sample-1-x86
+  189  vim samples/x86/selfROP-sample-1-x86.c 
+  190  nano samples/x86/selfROP-sample-1-x86.c
+  191  nano samples/x86/selfROP-sample-1-x86.c
+  192  cat samples/x86/selfROP-sample-1-x86.c
+  193  cat Makefile
+  194  cat Makefile|less
+  195  cat samples/x86/Makefile 
+  196  cat samples/x86/Makefile |less
+  197  history 
+  198  exit
+  199  gdb 
+  200  exit
+  201  cd addr-info/
+  202  make
+  203  vim samples/x86/selfROP-sample-1-x86.c 
+  204  vim samples/x86/selfROP-sample-1-x86.c 
+  205  vim samples/x86/selfROP-sample-1-x86.c 
+  206  make
+  207  clear
+  208  make
+  209  make clean
+  210  make
+  211  vim samples/x86/selfROP-sample-1-x86.c 
+  212  cd addr-info/
+  213  vim samples/x86/selfROP-sample-1-x86.c 
+  214  make
+  215  clear
+  216  vim samples/x86/selfROP-sample-1-x86.c 
+  217  clear
+  218  make
+  219  samples/x86/selfROP-sample-1-x86 
+  220  /data/local/tmp/build_android/bin32/drrun -c /data/local/tmp/build_android/api/bin/libbbcount.so -- ls
+  221  /data/local/tmp/build_android/bin32/drru
+  222  /data/local/tmp/build_android/bin32/drrun 
+  223  /data/local/tmp/build_android/bin32/drrun -c /data/local/tmp/build_android/api/bin/libbbcount.so
+  224  /data/local/tmp/build_android/bin32/drrun -c /data/local/tmp/build_android/api/bin/libbbcount.so
+  225  /data/local/tmp/build_android/bin32/drrun -c /data/local/tmp/build_android/api/bin/libbbcount.so -- ls
+  226  /data/local/tmp/build_android/bin32/drrun -c /data/local/tmp/build_android/api/bin/libshadowstack.so -- ls
+  227  /data/local/tmp/build_android/bin32/drrun -c /data/local/tmp/build_android/api/bin/libshadowstack.so -- samples/x86/selfROP-sample-1-x86
+  228  history > dump
