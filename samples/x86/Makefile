@@ -1,5 +1,5 @@
 #include Makefile.inc
-CFLAGS:= -m32
+CFLAGS:= -g -lc -pie -fPIE
 #ARCH := $(shell getconf LONG_BIT)
 #CPP_FLAGS_32 := -m32 -Wall -I$(INC_DIR) #...  Some 32 specific compiler flags ...
 #CPP_FLAGS_64 := -Wall -I$(INC_DIR)
@@ -35,7 +35,7 @@ show-objects:
 %: %.c
 	$(CC) $(CPP_FLAGS) $(CFLAGS) $(PRJCFLAGS) -o $@ $< $(LDFLAGS)
 
-ifeq ($(filter x86%,$(UNAME_M)),)
+ifeq ($(filter x86% %i686,$(UNAME_M)),)
 	$(error Compile this sample on intel)
 endif
 clean:
